@@ -5,7 +5,7 @@ defmodule DesafioCotacao.HttpClient.ServiceA do
 
   plug Tesla.Middleware.JSON
 
-  def get_currency_price(url \\ @base_url, currency) do
+  def get_currency(url \\ @base_url, currency) do
     query_params = [moeda: currency]
 
     case is_binary(currency) do
