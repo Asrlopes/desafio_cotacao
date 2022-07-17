@@ -1,8 +1,11 @@
 defmodule DesafioCotacaoWeb.CurrencyPriceController do
   use DesafioCotacaoWeb, :controller
 
+  alias DesafioCotacao.Currency
+
   def get(conn, %{"currency" => currency}) do
-    conn
-    |> send_resp(200, currency)
+    with {:ok, currency_info} <- Currency.get_currency_info(currency) do
+      render(conn, currency_info: currency_info)
+    end
   end
 end

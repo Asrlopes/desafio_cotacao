@@ -3,7 +3,7 @@ defmodule DesafioCotacao.HttpClient.ServiceATest do
 
   alias DesafioCotacao.HttpClient.ServiceA
 
-  describe "get_currency_price/2" do
+  describe "get_currency/2" do
     setup do
       bypass = Bypass.open()
       {:ok, bypass: bypass}
@@ -28,7 +28,7 @@ defmodule DesafioCotacao.HttpClient.ServiceATest do
 
       expected_response = {:ok, %{"cotacao" => 3.124, "moeda" => "BRL", "symbol" => "💵"}}
 
-      assert ServiceA.get_currency_price(url, currency) == expected_response
+      assert ServiceA.get_currency(url, currency) == expected_response
     end
 
     test "returns a message when the currency parameter its not given", %{bypass: bypass} do
@@ -41,12 +41,12 @@ defmodule DesafioCotacao.HttpClient.ServiceATest do
       Bypass.expect(bypass, "GET", "/cotacao", fn conn ->
         conn
         |> Plug.Conn.put_resp_header("content-type", "application/json")
-        |> Plug.Conn.resp(200, body)
+        |> Plug.Conn.resp(400, body)
       end)
 
       expected_response = {:ok, %{"erro" => "Oh, no! Você precisa informar o parâmetro 'moeda'!"}}
 
-      assert ServiceA.get_currency_price(url, nil) == expected_response
+      assert ServiceA.get_currency(url, nil) == expected_response
     end
 
     defp endpoint_url(port), do: "http://localhost:#{port}/"
