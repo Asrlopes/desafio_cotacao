@@ -1,7 +1,7 @@
-defmodule DesafioCotacao.HttpClient.ServiceATest do
+defmodule DesafioCotacao.HttpClient.ServiceA.ApiTest do
   use ExUnit.Case, async: true
 
-  alias DesafioCotacao.HttpClient.ServiceA.Client
+  alias DesafioCotacao.HttpClient.ServiceA.Api
 
   describe "get_currency/2" do
     setup do
@@ -28,7 +28,7 @@ defmodule DesafioCotacao.HttpClient.ServiceATest do
 
       expected_response = {:ok, %{"cotacao" => 3.124, "moeda" => "BRL", "symbol" => "💵"}}
 
-      assert Client.get_currency(url, currency) == expected_response
+      assert Api.get_currency(url, currency) == expected_response
     end
 
     test "returns a message when the currency parameter its not given", %{bypass: bypass} do
@@ -46,7 +46,7 @@ defmodule DesafioCotacao.HttpClient.ServiceATest do
 
       expected_response = {:ok, %{"erro" => "Oh, no! Você precisa informar o parâmetro 'moeda'!"}}
 
-      assert Client.get_currency(url, nil) == expected_response
+      assert Api.get_currency(url, nil) == expected_response
     end
 
     defp endpoint_url(port), do: "http://localhost:#{port}/"
