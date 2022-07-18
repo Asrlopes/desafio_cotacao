@@ -1,4 +1,6 @@
 defmodule DesafioCotacao.HttpClient.ServiceA.Response do
+  alias DesafioCotacao.HttpClient.ServiceA.Body
+
   @fields [
     :headers,
     :status,
@@ -15,6 +17,6 @@ defmodule DesafioCotacao.HttpClient.ServiceA.Response do
   @type t :: %__MODULE__{
           headers: headers(),
           status: status(),
-          body: any()
+          body: Body
         }
 end

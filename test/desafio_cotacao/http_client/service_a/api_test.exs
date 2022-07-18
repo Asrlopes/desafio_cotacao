@@ -26,7 +26,7 @@ defmodule DesafioCotacao.HttpClient.ServiceA.ApiTest do
         |> Plug.Conn.resp(200, body)
       end)
 
-      expected_response = {:ok, %{"cotacao" => 3.124, "moeda" => "BRL", "symbol" => "💵"}}
+      expected_response = {:ok, %{"cotacao" => 3124, "moeda" => "BRL"}}
 
       assert Api.get_currency(url, currency) == expected_response
     end
