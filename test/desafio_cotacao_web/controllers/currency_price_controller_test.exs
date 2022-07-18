@@ -6,7 +6,7 @@ defmodule DesafioCotacaoWeb.CurrencyPriceControllerTest do
       currency = "BRL"
       conn = get(conn, Routes.currency_price_path(conn, :get, currency))
 
-      assert %{"cotacao" => _cotacao, "moeda" => _moeda, "symbol" => _symbol} =
+      assert %{"cotacao" => _cotacao, "moeda" => _moeda} =
                json_response(conn, 200)
     end
   end

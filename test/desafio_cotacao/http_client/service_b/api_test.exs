@@ -29,7 +29,7 @@ defmodule DesafioCotacao.HttpClient.ServiceB.ApiTest do
       end)
 
       expected_response =
-        {:ok, %{"cotacao" => %{"currency" => "BRL", "fator" => 1000, "valor" => "3519"}}}
+        {:ok, %{"cotacao" => 3519, "moeda" => "BRL"}}
 
       assert Api.get_currency(url, currency) == expected_response
     end
