@@ -1,5 +1,5 @@
 defmodule DesafioCotacao.Currency do
-  alias DesafioCotacao.HttpClient.ServiceA.Client
+  alias DesafioCotacao.HttpClient.ServiceA.Api
 
-  def get_currency_info(currency), do: Client.get_currency(currency)
+  def get_currency_info(currency), do: Api.get_currency(currency)
 end
