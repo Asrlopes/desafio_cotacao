@@ -9,7 +9,7 @@ defmodule DesafioCotacao.CurrencyTest do
 
       response = Currency.get_currency_info(currency)
 
-      assert {:ok, %{"cotacao" => _cotacao, "moeda" => "BRL", "symbol" => _symbol}} = response
+      assert {:ok, %{"cotacao" => _cotacao, "moeda" => "BRL"}} = response
     end
 
     test "return an message when the given currency is nil" do
