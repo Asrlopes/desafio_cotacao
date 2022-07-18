@@ -1,4 +1,4 @@
-defmodule DesafioCotacao.HttpClient.ServiceA do
+defmodule DesafioCotacao.HttpClient.ServiceA.Client do
   use Tesla
 
   @base_url "http://localhost:8080/servico-a"
